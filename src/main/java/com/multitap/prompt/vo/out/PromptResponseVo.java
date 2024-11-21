@@ -1,6 +1,6 @@
-package com.multitap.prompt.vo;
+package com.multitap.prompt.vo.out;
 
-import com.multitap.prompt.entity.PromptDetails;
+import com.multitap.prompt.domain.PromptDetails;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

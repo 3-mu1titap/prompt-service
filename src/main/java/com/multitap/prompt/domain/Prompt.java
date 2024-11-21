@@ -1,5 +1,7 @@
-package com.multitap.prompt.entity;
+package com.multitap.prompt.domain;
 
+import com.multitap.prompt.domain.enums.DocumentType;
+import com.multitap.prompt.domain.enums.IndustryType;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -12,8 +14,8 @@ public class Prompt {
 
     @Id
     private String id;
-    private String industry;
-    private String documentType;
+    private IndustryType industry;
+    private DocumentType documentType;
     private PromptDetails promptDetails;
 
 }

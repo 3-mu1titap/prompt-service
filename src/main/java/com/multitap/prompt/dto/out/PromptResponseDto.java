@@ -1,8 +1,8 @@
 package com.multitap.prompt.dto.out;
 
-import com.multitap.prompt.entity.Prompt;
-import com.multitap.prompt.entity.PromptDetails;
-import com.multitap.prompt.vo.PromptResponseVo;
+import com.multitap.prompt.domain.Prompt;
+import com.multitap.prompt.domain.PromptDetails;
+import com.multitap.prompt.vo.out.PromptResponseVo;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

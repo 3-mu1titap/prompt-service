@@ -4,7 +4,7 @@ import com.multitap.prompt.application.PromptService;
 import com.multitap.prompt.common.response.BaseResponse;
 import com.multitap.prompt.dto.in.PromptRequestDto;
 import com.multitap.prompt.dto.out.PromptResponseDto;
-import com.multitap.prompt.vo.PromptResponseVo;
+import com.multitap.prompt.vo.out.PromptResponseVo;
 import com.multitap.prompt.vo.in.PromptRequestVo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
