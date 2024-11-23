@@ -1,5 +1,6 @@
 package com.multitap.prompt.dto.out;
 
+import com.multitap.prompt.domain.Prompt;
 import com.multitap.prompt.domain.PromptDetails;
 import com.multitap.prompt.vo.out.PromptDetailsResponseVo;
 import jakarta.annotation.security.DenyAll;
@@ -20,10 +21,10 @@ public class PromptDetailsResponseDto {
         this.request = request;
     }
 
-    public static PromptDetailsResponseDto from(PromptDetails promptDetails) {
+    public static PromptDetailsResponseDto from(Prompt prompt) {
         return PromptDetailsResponseDto.builder()
-                .replyFormat(promptDetails.getReplyFormat())
-                .request(promptDetails.getRequest())
+                .replyFormat(prompt.getPromptDetails().getReplyFormat())
+                .request(prompt.getPromptDetails().getRequest())
                 .build();
     }
 
@@ -33,6 +34,5 @@ public class PromptDetailsResponseDto {
                 .request(request)
                 .build();
     }
-
 
 }

@@ -11,5 +11,5 @@ public interface PromptService {
     void addPrompt(PromptRequestDto promptRequestDto);
     List<PromptResponseDto> getPromptList();
     void changePrompt(PromptRequestDto promptRequestDto, String id);
-    PromptDetailsResponseDto setPromptDetails(RetrievePromptRequestDto retrievePromptRequestDto);
+    PromptDetailsResponseDto searchPromptDetails(RetrievePromptRequestDto retrievePromptRequestDto);
 }

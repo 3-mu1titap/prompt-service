@@ -32,7 +32,7 @@ public class PromptController {
         return new BaseResponse<>();
     }
 
-    @Operation(summary = "피드백을 위한 프롬프트 조회", description = "프롬프트 조회")
+    @Operation(summary = "프롬프트 리스트 조회", description = "프롬프트 리스트 조회")
     @GetMapping()
     public BaseResponse<List<PromptResponseVo>> getPrompt() {
         List<PromptResponseVo> promptResponseVoList = promptService.getPromptList()
@@ -52,8 +52,11 @@ public class PromptController {
     @Operation(summary = "피드백을 위한 프롬프트 AI 피드백 서비스로 전달", description = "프롬프트 전달")
     @PostMapping("/send")
     public BaseResponse<PromptDetailsResponseVo> sendPromptDetails(@RequestBody RetrievePromptRequestVo retrievePromptRequestVo) {
-        return new BaseResponse<>(promptService.setPromptDetails(RetrievePromptRequestDto.from(retrievePromptRequestVo)).toVo());
 
+        PromptDetailsResponseVo promptDetailsResponseVo = promptService.searchPromptDetails(RetrievePromptRequestDto.from(retrievePromptRequestVo)).toVo();
+
+        log.info("프롬프트 최종 전달 값 : {},{}" ,promptDetailsResponseVo.getReplyFormat(),promptDetailsResponseVo.getRequest());
+
+        return new BaseResponse<>(promptDetailsResponseVo);
     }
-
 }

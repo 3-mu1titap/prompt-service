@@ -22,8 +22,8 @@ public class RetrievePromptRequestDto {
 
     public static RetrievePromptRequestDto from(RetrievePromptRequestVo retrievePromptRequestVo) {
         return RetrievePromptRequestDto.builder()
-                .industryType(retrievePromptRequestVo.getIndustryType())
-                .documentType(retrievePromptRequestVo.getDocumentType())
+                .industryType(IndustryType.valueOf(retrievePromptRequestVo.getIndustryType()))
+                .documentType(DocumentType.valueOf(retrievePromptRequestVo.getDocumentType()))
                 .build();
     }
 

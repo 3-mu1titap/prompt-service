@@ -9,12 +9,14 @@ import com.multitap.prompt.dto.out.PromptResponseDto;
 import com.multitap.prompt.domain.Prompt;
 import com.multitap.prompt.infrastructure.PromptRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PromptServiceImpl implements PromptService {
 
     private final PromptRepository promptRepository;
@@ -38,9 +40,13 @@ public class PromptServiceImpl implements PromptService {
     }
 
     @Override
-    public PromptDetailsResponseDto setPromptDetails(RetrievePromptRequestDto retrievePromptRequestDto) {
-        Prompt prompt = promptRepository.findByIndustryAndDocumentType(retrievePromptRequestDto.getIndustryType(),retrievePromptRequestDto.getDocumentType());
-        return PromptDetailsResponseDto.from(prompt.getPromptDetails());
+    public PromptDetailsResponseDto searchPromptDetails(RetrievePromptRequestDto retrievePromptRequestDto) {
+        Prompt prompt = promptRepository.findByIndustryAndDocumentType(retrievePromptRequestDto.getIndustryType(),retrievePromptRequestDto.getDocumentType())
+                .orElseThrow(()-> new BaseException(BaseResponseStatus.NO_EXIST_PROMPT));
+
+        log.info("프롬프트 전달 값:{},{}",prompt.getPromptDetails().getReplyFormat(),prompt.getPromptDetails().getRequest());
+
+        return PromptDetailsResponseDto.from(prompt);
     }
 
 }
