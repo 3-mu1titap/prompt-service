@@ -1,7 +1,6 @@
 package com.multitap.prompt.presentation;
 
 import com.multitap.prompt.application.PromptService;
-import com.multitap.prompt.common.exception.BaseException;
 import com.multitap.prompt.common.response.BaseResponse;
 import com.multitap.prompt.dto.in.PromptRequestDto;
 import com.multitap.prompt.dto.in.RetrievePromptRequestDto;
