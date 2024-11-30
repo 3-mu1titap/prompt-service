@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
 @Repository
 public interface PromptRepository extends MongoRepository<Prompt, String> {
 
     Optional<Prompt> findByIndustryAndDocumentType(IndustryType industry, DocumentType documentType);
+    Prompt findByCategory(String categoryCode);
 }
