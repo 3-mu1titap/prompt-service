@@ -8,12 +8,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FeedbackScoreDto {
 
+    private String uuid;
     private ElementScore firstScore;
     private ElementScore lastScore;
     private String categoryCode;
 
     @Builder
-    public FeedbackScoreDto(ElementScore firstScore, ElementScore lastScore, String categoryCode) {
+    public FeedbackScoreDto(String uuid, ElementScore firstScore, ElementScore lastScore, String categoryCode) {
+        this.uuid = uuid;
         this.firstScore = firstScore;
         this.lastScore = lastScore;
         this.categoryCode = categoryCode;
