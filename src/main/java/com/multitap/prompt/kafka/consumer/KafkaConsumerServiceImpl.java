@@ -19,7 +19,7 @@ public class KafkaConsumerServiceImpl implements KafkaConsumerService {
     @Override
     public void getCategoryPrompt(FeedbackScoreCategoryRequestDto feedbackScoreCategoryRequestDto) {
         FeedbackScoreCategoryResponseDto feedbackScoreCategoryResponseDto =  FeedbackScoreCategoryResponseDto.from(promptRepository.findByCategory(feedbackScoreCategoryRequestDto.getCategoryCode()),feedbackScoreCategoryRequestDto);
-        log.info("prompt : {}", feedbackScoreCategoryResponseDto.getRequest());
+        log.info("prompt : {}", feedbackScoreCategoryResponseDto.getPromptDetails());
         kafkaProducerService.sendCreateCategoryPrompt(feedbackScoreCategoryResponseDto);
     }
 }

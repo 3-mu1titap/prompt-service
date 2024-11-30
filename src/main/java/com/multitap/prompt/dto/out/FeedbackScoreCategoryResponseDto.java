@@ -1,6 +1,7 @@
 package com.multitap.prompt.dto.out;
 
 import com.multitap.prompt.domain.Prompt;
+import com.multitap.prompt.domain.PromptDetails;
 import com.multitap.prompt.dto.in.FeedbackScoreCategoryRequestDto;
 import com.multitap.prompt.kafka.consumer.messagein.FeedbackScoreDto;
 import lombok.Builder;
@@ -12,21 +13,19 @@ import lombok.NoArgsConstructor;
 public class FeedbackScoreCategoryResponseDto {
 
     private FeedbackScoreDto feedbackScoreDto;
-    private String replyFormat;
-    private String request;
+    private PromptDetails promptDetails;
 
     @Builder
-    public FeedbackScoreCategoryResponseDto(FeedbackScoreDto feedbackScoreDto, String replyFormat, String request) {
+    public FeedbackScoreCategoryResponseDto(FeedbackScoreDto feedbackScoreDto, PromptDetails promptDetails) {
         this.feedbackScoreDto = feedbackScoreDto;
-        this.replyFormat = replyFormat;
-        this.request = request;
+        this.promptDetails = promptDetails;
+
     }
 
     public static FeedbackScoreCategoryResponseDto from (Prompt prompt, FeedbackScoreCategoryRequestDto feedbackScoreCategoryRequestDto) {
         return FeedbackScoreCategoryResponseDto.builder()
                 .feedbackScoreDto(feedbackScoreCategoryRequestDto.getFeedbackScore())
-                .replyFormat(prompt.getPromptDetails().getReplyFormat())
-                .request(prompt.getPromptDetails().getRequest())
+                .promptDetails(prompt.getPromptDetails())
                 .build();
     }
 }
