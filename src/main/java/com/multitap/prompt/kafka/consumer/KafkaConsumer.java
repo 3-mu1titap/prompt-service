@@ -17,7 +17,7 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "create-ai-feedback-score-topic", groupId = "feedback-consumer-group", containerFactory = "feedbackScoreDtoListener")
     public void processFeedbackScore(FeedbackScoreDto feedbackScoreDto) {
-        log.info("Received feedbackScoreDto :{}", feedbackScoreDto.getCategoryCode());
+        log.info("Received feedbackScoreDto :{}", feedbackScoreDto.getUuid());
         kafkaConsumerService.getCategoryPrompt(FeedbackScoreCategoryRequestDto.from(feedbackScoreDto));
     }
 
