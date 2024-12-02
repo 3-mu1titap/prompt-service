@@ -2,6 +2,7 @@ package com.multitap.prompt.application;
 
 import com.multitap.prompt.common.exception.BaseException;
 import com.multitap.prompt.common.response.BaseResponseStatus;
+import com.multitap.prompt.dto.in.ContentPromptRequestDto;
 import com.multitap.prompt.dto.in.PromptRequestDto;
 import com.multitap.prompt.dto.in.RetrievePromptRequestDto;
 import com.multitap.prompt.dto.out.PromptDetailsResponseDto;
@@ -27,6 +28,11 @@ public class PromptServiceImpl implements PromptService {
     }
 
     @Override
+    public void addContentPrompt(ContentPromptRequestDto contentPromptRequestDto) {
+        promptRepository.save(contentPromptRequestDto.toEntity(contentPromptRequestDto));
+    }
+
+    @Override
     public List<PromptResponseDto> getPromptList() {
         return promptRepository.findAll().stream()
                 .map(PromptResponseDto::from)
@@ -45,7 +51,6 @@ public class PromptServiceImpl implements PromptService {
                 .orElseThrow(()-> new BaseException(BaseResponseStatus.NO_EXIST_PROMPT));
 
         log.info("프롬프트 전달 값:{},{}",prompt.getPromptDetails().getReplyFormat(),prompt.getPromptDetails().getRequest());
-
         return PromptDetailsResponseDto.from(prompt);
     }
 

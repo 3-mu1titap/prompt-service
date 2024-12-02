@@ -2,9 +2,11 @@ package com.multitap.prompt.presentation;
 
 import com.multitap.prompt.application.PromptService;
 import com.multitap.prompt.common.response.BaseResponse;
+import com.multitap.prompt.dto.in.ContentPromptRequestDto;
 import com.multitap.prompt.dto.in.PromptRequestDto;
 import com.multitap.prompt.dto.in.RetrievePromptRequestDto;
 import com.multitap.prompt.dto.out.PromptResponseDto;
+import com.multitap.prompt.vo.in.ContentPromptRequestVo;
 import com.multitap.prompt.vo.in.RetrievePromptRequestVo;
 import com.multitap.prompt.vo.out.PromptDetailsResponseVo;
 import com.multitap.prompt.vo.out.PromptResponseVo;
@@ -30,6 +32,15 @@ public class PromptController {
         promptService.addPrompt(PromptRequestDto.from(promptRequestVo));
         return new BaseResponse<>();
     }
+
+    @Operation(summary = "볼팡이 코멘트를 위한 프롬프트 등록", description = "볼팡이 응답용 프롬프트 등록")
+    @PostMapping("/content")
+    public BaseResponse<Void> addContentPrompt(@RequestBody ContentPromptRequestVo contentPromptRequestVo) {
+        promptService.addContentPrompt(ContentPromptRequestDto.from(contentPromptRequestVo));
+        return new BaseResponse<>();
+    }
+
+
 
     @Operation(summary = "프롬프트 리스트 조회", description = "프롬프트 리스트 조회")
     @GetMapping()
