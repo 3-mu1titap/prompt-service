@@ -1,6 +1,8 @@
-package com.multitap.prompt.vo;
+package com.multitap.prompt.vo.out;
 
-import com.multitap.prompt.entity.PromptDetails;
+import com.multitap.prompt.domain.PromptDetails;
+import com.multitap.prompt.domain.enums.DocumentType;
+import com.multitap.prompt.domain.enums.IndustryType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class PromptResponseVo {
 
     private String id;
-    private String industry;
-    private String documentType;
+    private IndustryType industry;
+    private DocumentType documentType;
     private PromptDetails promptDetails;
 
 }
