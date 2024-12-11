@@ -38,6 +38,6 @@ public class SwaggerConfig {
                 .title("PROMPT SERVICE")
                 .description("PROMPT SERVICE Swagger UI")
                 .version("1.0.0");
-        //
+        // 3
     }
 }
