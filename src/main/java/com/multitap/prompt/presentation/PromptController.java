@@ -70,5 +70,5 @@ public class PromptController {
         return new BaseResponse<>(promptDetailsResponseVo);
     }
 
-    //todo: dev 설정2
+    //todo: dev 설정3
 }
