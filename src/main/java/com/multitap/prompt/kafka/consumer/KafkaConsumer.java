@@ -15,6 +15,7 @@ public class KafkaConsumer {
 
     private final KafkaConsumerService kafkaConsumerService;
 
+    // feedbackQuery 에서 컨슘 받아서 프롬프트를 결합하여
     @KafkaListener(topics = "create-ai-feedback-score-topic", groupId = "feedback-consumer-group", containerFactory = "feedbackScoreDtoListener")
     public void processFeedbackScore(FeedbackScoreDto feedbackScoreDto) {
         log.info("Received feedbackScoreDto :{}", feedbackScoreDto.getUuid());
